@@ -1,0 +1,141 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${packageName}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/ltImageType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/textImageType"
+        android:textSize="24sp"
+        android:paddingTop="5dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Spinner
+        android:id="@+id/spinnerImageType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/ltImageType"
+        android:layout_alignBottom="@id/ltImageType"
+        android:layout_alignTop="@id/ltImageType"
+        android:layout_marginLeft="24dp" />
+    
+      <TextView
+          android:id="@+id/ltImageSize"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_below="@id/ltImageType"
+          android:layout_marginTop="10dp"
+          android:paddingBottom="10dp"
+          android:paddingLeft="5dp"
+          android:paddingRight="10dp"
+          android:paddingTop="5dp"
+          android:text="@string/textImageSize"
+          android:textAppearance="?android:attr/textAppearanceLarge"
+          android:textSize="24sp" />
+
+    <Spinner
+        android:id="@+id/spinnerImageSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/ltImageSize"
+        android:layout_alignBottom="@id/ltImageSize"
+        android:layout_alignTop="@id/ltImageSize"
+        android:layout_marginLeft="24dp" />
+    
+          <TextView
+              android:id="@+id/ltImageColor"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:layout_below="@id/ltImageSize"
+              android:layout_marginTop="10dp"
+              android:paddingBottom="10dp"
+              android:paddingLeft="5dp"
+              android:paddingRight="10dp"
+              android:paddingTop="5dp"
+              android:text="@string/textImageColor"
+              android:textAppearance="?android:attr/textAppearanceLarge"
+              android:textSize="24sp" />
+
+    <Spinner
+        android:id="@+id/spinnerImageColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/ltImageColor"
+        android:layout_alignBottom="@id/ltImageColor"
+        android:layout_alignTop="@id/ltImageColor"
+        android:layout_marginLeft="24dp" />
+    
+          <TextView
+              android:id="@+id/ltImageSafety"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentLeft="true"
+              android:layout_below="@id/ltImageColor"
+              android:layout_marginTop="10dp"
+              android:paddingBottom="10dp"
+              android:paddingLeft="5dp"
+              android:paddingRight="10dp"
+              android:paddingTop="5dp"
+              android:text="@string/textSafety"
+              android:textAppearance="?android:attr/textAppearanceLarge"
+              android:textSize="24sp" />
+
+    <Spinner
+        android:id="@+id/spinnerImageSafety"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/ltImageSafety"
+        android:layout_alignBottom="@id/ltImageSafety"
+        android:layout_alignTop="@id/ltImageSafety"
+        android:layout_marginLeft="24dp" />
+    
+              <TextView
+                  android:id="@+id/ltImageSite"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentLeft="true"
+                  android:layout_below="@id/ltImageSafety"
+                  android:layout_marginTop="10dp"
+                  android:paddingBottom="10dp"
+                  android:paddingLeft="5dp"
+                  android:paddingRight="10dp"
+                  android:paddingTop="5dp"
+                  android:text="@string/textSite"
+                  android:textAppearance="?android:attr/textAppearanceLarge"
+                  android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/etImageSite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/ltImageSite"
+        android:layout_alignTop="@id/ltImageSite"
+        android:layout_marginLeft="24dp"
+        android:layout_toRightOf="@id/ltImageSite"
+        android:hint="@string/textSiteHint" />
+
+    <Button
+        android:id="@+id/settingsDoneButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="62dp"
+        android:layout_marginRight="30dp"
+        android:onClick="onSettingsDone"
+        android:text="@string/textDone" />
+
+   
+
+</RelativeLayout>
