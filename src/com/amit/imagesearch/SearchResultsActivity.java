@@ -14,7 +14,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,11 +28,12 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 public class SearchResultsActivity extends Activity {
-  
+
   SharedPreferences mPreferences;
+  private String query;
   private GridView gvResults;
 
-  List<ImageResult> imageResutls = new ArrayList<ImageResult>();
+  List<ImageResult> imageResults = new ArrayList<ImageResult>();
   ImageResultArrayAdaptor irArrayAdaptor;
 
   @Override
@@ -41,23 +41,60 @@ public class SearchResultsActivity extends Activity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_search_results);
     mPreferences = getSharedPreferences(SettingsActivity.SETTINGS_FILE, 0);
-    
+
     gvResults = (GridView) findViewById(R.id.gvResults);
-    irArrayAdaptor = new ImageResultArrayAdaptor(this, imageResutls);
+    irArrayAdaptor = new ImageResultArrayAdaptor(this, imageResults);
     gvResults.setAdapter(irArrayAdaptor);
-    
+
     gvResults.setOnItemClickListener(new OnItemClickListener() {
 
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(getApplicationContext(), ImageDisplayActivity.class);
-        ImageResult imageResult = imageResutls.get(position);
+        ImageResult imageResult = imageResults.get(position);
         intent.putExtra("url", imageResult.getUrl());
         startActivity(intent);
       }
     });
-    
+
+    gvResults.setOnScrollListener(new EndlessScrollListener() {
+      @Override
+      public void onLoadMore(int page, int totalItemsCount) {
+        // Triggered only when new data needs to be appended to the list
+        // Add whatever code is needed to append new items to your AdapterView
+        loadDataFromApi(page);
+        // or customLoadMoreDataFromApi(totalItemsCount); 
+      }
+    });
+
     handleIntent(getIntent());
+  }
+
+  private void loadDataFromApi(int page) {
+    RequestParams rp = new RequestParams();
+    rp.add("q", query);
+    rp.add("start", String.valueOf(4 * page));
+
+    addParameters(rp);
+
+    AsyncHttpClient asClient = new AsyncHttpClient();
+    asClient.get("https://ajax.googleapis.com/ajax/services/search/images?v=1.0", rp,
+        new JsonHttpResponseHandler() {
+
+          @Override
+          public void onSuccess(JSONObject response) {
+            JSONArray imageJsonArray = null;
+            try {
+              imageJsonArray = response.getJSONObject("responseData").getJSONArray("results");
+              //imageResutls.clear();
+              irArrayAdaptor.addAll(ImageResult.fromJsonArray(imageJsonArray));
+              // Log.d("DEBUG", imageResutls.toString());
+            } catch (JSONException e) {
+              e.printStackTrace();
+            }
+          }
+        });
+
   }
 
   @Override
@@ -67,62 +104,41 @@ public class SearchResultsActivity extends Activity {
 
   private void handleIntent(Intent intent) {
     if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-      String query = intent.getStringExtra(SearchManager.QUERY);
+      query = intent.getStringExtra(SearchManager.QUERY);
       //use the query to search your data somehow
-      
-      RequestParams rp = new RequestParams();
-      rp.add("q", query);
-      
-      addParameters(rp);
-      
-      AsyncHttpClient asClient = new AsyncHttpClient();
-      asClient.get("https://ajax.googleapis.com/ajax/services/search/images?v=1.0", rp, 
-          new JsonHttpResponseHandler() {
-        
-        @Override
-        public void onSuccess(JSONObject response) {
-          JSONArray imageJsonArray = null;
-          try {
-            imageJsonArray = response.getJSONObject("responseData").getJSONArray("results");
-            imageResutls.clear();
-            irArrayAdaptor.addAll(ImageResult.fromJsonArray(imageJsonArray));
-            Log.d("DEBUG", imageResutls.toString());
-          } catch (JSONException e) {
-            e.printStackTrace();
-          }
-        }
-      });
+      imageResults.clear();
+      loadDataFromApi(0);
     } else {
       Toast.makeText(this, "USe search button to Query", Toast.LENGTH_LONG).show();
     }
   }
 
   private void addParameters(RequestParams rp) {
-    String imageType = mPreferences.getString(SettingsActivity.SETTINGS_KEY_IMAGE_TYPE, null);    
-    if ( imageType != null && !imageType.isEmpty()) {
+    String imageType = mPreferences.getString(SettingsActivity.SETTINGS_KEY_IMAGE_TYPE, null);
+    if (imageType != null && !imageType.isEmpty()) {
       rp.add(SettingsActivity.SETTINGS_KEY_IMAGE_TYPE, imageType.toLowerCase(Locale.US));
     }
-    
-    String imageSize = mPreferences.getString(SettingsActivity.SETTINGS_KEY_IMAGE_SIZE, null);    
-    if ( imageSize != null && !imageSize.isEmpty()) {
+
+    String imageSize = mPreferences.getString(SettingsActivity.SETTINGS_KEY_IMAGE_SIZE, null);
+    if (imageSize != null && !imageSize.isEmpty()) {
       rp.add(SettingsActivity.SETTINGS_KEY_IMAGE_SIZE, imageSize.toLowerCase(Locale.US));
     }
 
-    String imageColor = mPreferences.getString(SettingsActivity.SETTINGS_KEY_IMAGE_COLOR, null);    
-    if ( imageColor != null && !imageColor.isEmpty()) {
+    String imageColor = mPreferences.getString(SettingsActivity.SETTINGS_KEY_IMAGE_COLOR, null);
+    if (imageColor != null && !imageColor.isEmpty()) {
       rp.add(SettingsActivity.SETTINGS_KEY_IMAGE_COLOR, imageColor.toLowerCase(Locale.US));
     }
 
-    String imageSafety = mPreferences.getString(SettingsActivity.SETTINGS_KEY_IMAGE_SAFETY, null);    
-    if ( imageSafety != null && !imageSafety.isEmpty()) {
+    String imageSafety = mPreferences.getString(SettingsActivity.SETTINGS_KEY_IMAGE_SAFETY, null);
+    if (imageSafety != null && !imageSafety.isEmpty()) {
       rp.add(SettingsActivity.SETTINGS_KEY_IMAGE_SAFETY, imageSafety.toLowerCase(Locale.US));
     }
 
-    String imageSiteFilter = mPreferences.getString(SettingsActivity.SETTINGS_KEY_IMAGE_SITE, null);    
-    if ( imageSiteFilter != null && !imageSiteFilter.isEmpty()) {
+    String imageSiteFilter = mPreferences.getString(SettingsActivity.SETTINGS_KEY_IMAGE_SITE, null);
+    if (imageSiteFilter != null && !imageSiteFilter.isEmpty()) {
       rp.add(SettingsActivity.SETTINGS_KEY_IMAGE_SITE, imageSiteFilter.toLowerCase(Locale.US));
     }
-    
+
   }
 
   @Override
