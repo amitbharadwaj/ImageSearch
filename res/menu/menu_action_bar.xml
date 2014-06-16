@@ -14,6 +14,5 @@
         android:onClick="onSettings"
         android:showAsAction="collapseActionView|ifRoom"
         android:title="@string/settings" />
-    
 
 </menu>
