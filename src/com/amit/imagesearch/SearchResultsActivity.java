@@ -131,8 +131,7 @@ public class SearchResultsActivity extends Activity {
   private void handleIntent(Intent intent) {
     if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
       query = intent.getStringExtra(SearchManager.QUERY);
-      //use the query to search your data somehow
-      imageResults.clear();
+      irArrayAdaptor.clear();
       loadDataFromApi(0);
     } else {
       Toast.makeText(this, "USe search button to Query", Toast.LENGTH_LONG).show();
