@@ -19,10 +19,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.GridView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.etsy.android.grid.StaggeredGridView;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -31,8 +31,9 @@ public class SearchResultsActivity extends Activity {
 
   SharedPreferences mPreferences;
   private String query;
-  private GridView gvResults;
 
+  //  private GridView gvResults;
+  private StaggeredGridView sgvResults;
   List<ImageResult> imageResults = new ArrayList<ImageResult>();
   ImageResultArrayAdaptor irArrayAdaptor;
 
@@ -42,11 +43,35 @@ public class SearchResultsActivity extends Activity {
     setContentView(R.layout.activity_search_results);
     mPreferences = getSharedPreferences(SettingsActivity.SETTINGS_FILE, 0);
 
-    gvResults = (GridView) findViewById(R.id.gvResults);
-    irArrayAdaptor = new ImageResultArrayAdaptor(this, imageResults);
-    gvResults.setAdapter(irArrayAdaptor);
+    irArrayAdaptor = new ImageResultArrayAdaptor(this, R.layout.item_image_results, imageResults);
+    sgvResults = (StaggeredGridView) findViewById(R.id.sgvResults);
+    sgvResults.setAdapter(irArrayAdaptor);
 
-    gvResults.setOnItemClickListener(new OnItemClickListener() {
+    //    gvResults = (GridView) findViewById(R.id.gvResults);
+    //    gvResults.setAdapter(irArrayAdaptor);
+    //
+    //    gvResults.setOnItemClickListener(new OnItemClickListener() {
+    //
+    //      @Override
+    //      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    //        Intent intent = new Intent(getApplicationContext(), ImageDisplayActivity.class);
+    //        ImageResult imageResult = imageResults.get(position);
+    //        intent.putExtra("url", imageResult.getUrl());
+    //        startActivity(intent);
+    //      }
+    //    });
+    //
+    //    gvResults.setOnScrollListener(new EndlessScrollListener() {
+    //      @Override
+    //      public void onLoadMore(int page, int totalItemsCount) {
+    //        // Triggered only when new data needs to be appended to the list
+    //        // Add whatever code is needed to append new items to your AdapterView
+    //        loadDataFromApi(page);
+    //        // or customLoadMoreDataFromApi(totalItemsCount); 
+    //      }
+    //    });
+
+    sgvResults.setOnItemClickListener(new OnItemClickListener() {
 
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -55,9 +80,10 @@ public class SearchResultsActivity extends Activity {
         intent.putExtra("url", imageResult.getUrl());
         startActivity(intent);
       }
+
     });
 
-    gvResults.setOnScrollListener(new EndlessScrollListener() {
+    sgvResults.setOnScrollListener(new EndlessScrollListener() {
       @Override
       public void onLoadMore(int page, int totalItemsCount) {
         // Triggered only when new data needs to be appended to the list
@@ -86,7 +112,7 @@ public class SearchResultsActivity extends Activity {
             JSONArray imageJsonArray = null;
             try {
               imageJsonArray = response.getJSONObject("responseData").getJSONArray("results");
-              //imageResutls.clear();
+              // imageResutls.clear();
               irArrayAdaptor.addAll(ImageResult.fromJsonArray(imageJsonArray));
               // Log.d("DEBUG", imageResutls.toString());
             } catch (JSONException e) {

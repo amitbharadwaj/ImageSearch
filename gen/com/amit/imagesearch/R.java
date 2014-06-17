@@ -15,14 +15,6 @@ public final class R {
         public static final int arrayImageTypes=0x7f060000;
     }
     public static final class attr {
-        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int drawSelectorOnTop=0x7f010000;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -30,40 +22,131 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int numColumns=0x7f010001;
+        public static final int column_count=0x7f010000;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int column_count_landscape=0x7f010002;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int column_count_portrait=0x7f010001;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int grid_paddingBottom=0x7f010007;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int grid_paddingLeft=0x7f010004;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int grid_paddingRight=0x7f010005;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int grid_paddingTop=0x7f010006;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int item_margin=0x7f010003;
     }
     public static final class drawable {
         public static final int ic_action_share=0x7f020000;
         public static final int ic_launcher=0x7f020001;
         public static final int ic_search=0x7f020002;
         public static final int ic_settings=0x7f020003;
+        public static final int icon=0x7f020004;
+        public static final int nature_1=0x7f020005;
+        public static final int nature_2=0x7f020006;
+        public static final int nature_3=0x7f020007;
+        public static final int nature_4=0x7f020008;
+        public static final int nature_5=0x7f020009;
     }
     public static final class id {
-        public static final int etImageSite=0x7f09000c;
-        public static final int gvResults=0x7f090002;
-        public static final int imageItem=0x7f09000e;
+        public static final int bottomImage=0x7f090008;
+        public static final int current_zoom=0x7f090019;
+        public static final int etImageSite=0x7f090013;
+        public static final int imageItem=0x7f09001b;
+        public static final int img=0x7f090015;
         public static final int ivResult=0x7f090000;
-        public static final int ltImageColor=0x7f090007;
-        public static final int ltImageSafety=0x7f090009;
-        public static final int ltImageSite=0x7f09000b;
-        public static final int ltImageSize=0x7f090005;
-        public static final int ltImageType=0x7f090003;
-        public static final int miSearch=0x7f09000f;
-        public static final int miSettings=0x7f090010;
-        public static final int miShare=0x7f090011;
-        public static final int settingsDoneButton=0x7f09000d;
-        public static final int spinnerImageColor=0x7f090008;
-        public static final int spinnerImageSafety=0x7f09000a;
-        public static final int spinnerImageSize=0x7f090006;
-        public static final int spinnerImageType=0x7f090004;
+        public static final int ltImageColor=0x7f09000e;
+        public static final int ltImageSafety=0x7f090010;
+        public static final int ltImageSite=0x7f090012;
+        public static final int ltImageSize=0x7f09000c;
+        public static final int ltImageType=0x7f09000a;
+        public static final int miSearch=0x7f09001c;
+        public static final int miSettings=0x7f09001d;
+        public static final int miShare=0x7f09001e;
+        public static final int mirror_touchimageview_button=0x7f090004;
+        public static final int scroll_position=0x7f090017;
+        public static final int settingsDoneButton=0x7f090014;
+        public static final int sgvResults=0x7f090009;
+        public static final int single_touchimageview_button=0x7f090002;
+        public static final int spinnerImageColor=0x7f09000f;
+        public static final int spinnerImageSafety=0x7f090011;
+        public static final int spinnerImageSize=0x7f09000d;
+        public static final int spinnerImageType=0x7f09000b;
+        public static final int switch_image_button=0x7f090005;
+        public static final int switch_scaletype_button=0x7f090006;
         public static final int textView2=0x7f090001;
+        public static final int topImage=0x7f090007;
+        public static final int top_text_line=0x7f090016;
+        public static final int view_pager=0x7f09001a;
+        public static final int viewpager_example_button=0x7f090003;
+        public static final int zoomed_rect=0x7f090018;
     }
     public static final class layout {
         public static final int activity_image_display=0x7f030000;
         public static final int activity_landing=0x7f030001;
-        public static final int activity_search_results=0x7f030002;
-        public static final int activity_settings=0x7f030003;
-        public static final int item_image_results=0x7f030004;
+        public static final int activity_main=0x7f030002;
+        public static final int activity_mirroring_example=0x7f030003;
+        public static final int activity_search_results=0x7f030004;
+        public static final int activity_settings=0x7f030005;
+        public static final int activity_single_touchimageview=0x7f030006;
+        public static final int activity_switch_image_example=0x7f030007;
+        public static final int activity_switch_scaletype_example=0x7f030008;
+        public static final int activity_viewpager_example=0x7f030009;
+        public static final int item_image_results=0x7f03000a;
     }
     public static final class menu {
         public static final int menu_action_bar=0x7f080000;
@@ -71,11 +154,22 @@ containing a value of this type.
     }
     public static final class string {
         public static final int app_name=0x7f050000;
+        public static final int get_current_zoom=0x7f050018;
+        public static final int get_scroll_position=0x7f050016;
+        public static final int get_zoomed_rect=0x7f050017;
         public static final int hello_world=0x7f050001;
+        public static final int mirror_touchimageview=0x7f050012;
+        public static final int mirroring_text=0x7f050019;
         public static final int search_hint=0x7f050003;
         public static final int search_title=0x7f050002;
         public static final int settings=0x7f050004;
         public static final int share=0x7f050005;
+        public static final int single_touchimageview=0x7f050011;
+        public static final int swipe_viewpager=0x7f05001a;
+        public static final int switch_image_example=0x7f050014;
+        public static final int switch_image_text=0x7f05001b;
+        public static final int switch_scaletype_example=0x7f050015;
+        public static final int switch_scaletype_text=0x7f05001c;
         public static final int textDone=0x7f05000b;
         public static final int textImageColor=0x7f05000d;
         public static final int textImageSize=0x7f05000c;
@@ -87,6 +181,7 @@ containing a value of this type.
         public static final int title_activity_image_display=0x7f050008;
         public static final int title_activity_search_results=0x7f050006;
         public static final int title_activity_settings=0x7f050009;
+        public static final int viewpager_example=0x7f050013;
     }
     public static final class style {
         /** 
@@ -126,31 +221,30 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #StaggeredGridView_drawSelectorOnTop com.amit.imagesearch:drawSelectorOnTop}</code></td><td></td></tr>
-           <tr><td><code>{@link #StaggeredGridView_numColumns com.amit.imagesearch:numColumns}</code></td><td></td></tr>
+           <tr><td><code>{@link #StaggeredGridView_column_count com.amit.imagesearch:column_count}</code></td><td></td></tr>
+           <tr><td><code>{@link #StaggeredGridView_column_count_landscape com.amit.imagesearch:column_count_landscape}</code></td><td></td></tr>
+           <tr><td><code>{@link #StaggeredGridView_column_count_portrait com.amit.imagesearch:column_count_portrait}</code></td><td></td></tr>
+           <tr><td><code>{@link #StaggeredGridView_grid_paddingBottom com.amit.imagesearch:grid_paddingBottom}</code></td><td></td></tr>
+           <tr><td><code>{@link #StaggeredGridView_grid_paddingLeft com.amit.imagesearch:grid_paddingLeft}</code></td><td></td></tr>
+           <tr><td><code>{@link #StaggeredGridView_grid_paddingRight com.amit.imagesearch:grid_paddingRight}</code></td><td></td></tr>
+           <tr><td><code>{@link #StaggeredGridView_grid_paddingTop com.amit.imagesearch:grid_paddingTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #StaggeredGridView_item_margin com.amit.imagesearch:item_margin}</code></td><td></td></tr>
            </table>
-           @see #StaggeredGridView_drawSelectorOnTop
-           @see #StaggeredGridView_numColumns
+           @see #StaggeredGridView_column_count
+           @see #StaggeredGridView_column_count_landscape
+           @see #StaggeredGridView_column_count_portrait
+           @see #StaggeredGridView_grid_paddingBottom
+           @see #StaggeredGridView_grid_paddingLeft
+           @see #StaggeredGridView_grid_paddingRight
+           @see #StaggeredGridView_grid_paddingTop
+           @see #StaggeredGridView_item_margin
          */
         public static final int[] StaggeredGridView = {
-            0x7f010000, 0x7f010001
+            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
+            0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007
         };
         /**
-          <p>This symbol is the offset where the {@link com.amit.imagesearch.R.attr#drawSelectorOnTop}
-          attribute's value can be found in the {@link #StaggeredGridView} array.
-
-
-          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.amit.imagesearch:drawSelectorOnTop
-        */
-        public static final int StaggeredGridView_drawSelectorOnTop = 0;
-        /**
-          <p>This symbol is the offset where the {@link com.amit.imagesearch.R.attr#numColumns}
+          <p>This symbol is the offset where the {@link com.amit.imagesearch.R.attr#column_count}
           attribute's value can be found in the {@link #StaggeredGridView} array.
 
 
@@ -160,8 +254,116 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.amit.imagesearch:numColumns
+          @attr name com.amit.imagesearch:column_count
         */
-        public static final int StaggeredGridView_numColumns = 1;
+        public static final int StaggeredGridView_column_count = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.amit.imagesearch.R.attr#column_count_landscape}
+          attribute's value can be found in the {@link #StaggeredGridView} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.amit.imagesearch:column_count_landscape
+        */
+        public static final int StaggeredGridView_column_count_landscape = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.amit.imagesearch.R.attr#column_count_portrait}
+          attribute's value can be found in the {@link #StaggeredGridView} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.amit.imagesearch:column_count_portrait
+        */
+        public static final int StaggeredGridView_column_count_portrait = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.amit.imagesearch.R.attr#grid_paddingBottom}
+          attribute's value can be found in the {@link #StaggeredGridView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.amit.imagesearch:grid_paddingBottom
+        */
+        public static final int StaggeredGridView_grid_paddingBottom = 7;
+        /**
+          <p>This symbol is the offset where the {@link com.amit.imagesearch.R.attr#grid_paddingLeft}
+          attribute's value can be found in the {@link #StaggeredGridView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.amit.imagesearch:grid_paddingLeft
+        */
+        public static final int StaggeredGridView_grid_paddingLeft = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.amit.imagesearch.R.attr#grid_paddingRight}
+          attribute's value can be found in the {@link #StaggeredGridView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.amit.imagesearch:grid_paddingRight
+        */
+        public static final int StaggeredGridView_grid_paddingRight = 5;
+        /**
+          <p>This symbol is the offset where the {@link com.amit.imagesearch.R.attr#grid_paddingTop}
+          attribute's value can be found in the {@link #StaggeredGridView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.amit.imagesearch:grid_paddingTop
+        */
+        public static final int StaggeredGridView_grid_paddingTop = 6;
+        /**
+          <p>This symbol is the offset where the {@link com.amit.imagesearch.R.attr#item_margin}
+          attribute's value can be found in the {@link #StaggeredGridView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.amit.imagesearch:item_margin
+        */
+        public static final int StaggeredGridView_item_margin = 3;
     };
 }

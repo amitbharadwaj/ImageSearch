@@ -3,8 +3,10 @@ package com.amit.imagesearch;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -14,21 +16,80 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.loopj.android.image.SmartImageView;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+import com.ortiz.touch.TouchImageView;
 
 public class ImageDisplayActivity extends Activity {
 
-  SmartImageView ivImage;
+  // SmartImageView ivImage;
+  TouchImageView ivImage;
+
+  private ImageLoader imageLoader;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_image_display);
     String url = getIntent().getStringExtra("url");
-    ivImage = (SmartImageView) findViewById(R.id.ivResult);
-    ivImage.setImageUrl(url);
+    //    ivImage = (SmartImageView) findViewById(R.id.ivResult);
+    //    ivImage.setImageUrl(url);
+
+    ivImage = (TouchImageView) findViewById(R.id.ivResult);
+
+    imageLoader = ImageLoader.getInstance();
+    imageLoader.init(ImageLoaderConfiguration.createDefault(this));
+
+    DisplayImageOptions options = new DisplayImageOptions.Builder()
+        .showImageOnLoading(R.drawable.ic_search) // resource or drawable
+        .showImageForEmptyUri(R.drawable.ic_search) // resource or drawable
+        .showImageOnFail(R.drawable.ic_search) // resource or drawable
+        .resetViewBeforeLoading(false)  // default
+        // .delayBeforeLoading(1000)
+        .cacheInMemory(true) // default
+        .cacheOnDisk(false) // default
+        // .preProcessor(...)
+        // .postProcessor(...)
+        // .extraForDownloader(...)
+        // .considerExifParams(false) // default
+        // .imageScaleType(ImageScaleType.IN_SAMPLE_POWER_OF_2) // default
+        .bitmapConfig(Bitmap.Config.ARGB_8888) // default
+        // .decodingOptions(...)
+        // .displayer(new SimpleBitmapDisplayer()) // default
+        // .handler(new Handler()) // default
+        .build();
+    ;
+
+    imageLoader.loadImage(url, options, new ImageLoadingListener() {
+
+      @Override
+      public void onLoadingStarted(String imageUri, View view) {
+
+      }
+
+      @Override
+      public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+
+      }
+
+      @Override
+      public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+        ivImage.setImageBitmap(loadedImage);
+      }
+
+      @Override
+      public void onLoadingCancelled(String imageUri, View view) {
+
+      }
+    });
+
   }
 
   @Override

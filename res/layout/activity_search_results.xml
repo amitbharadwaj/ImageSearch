@@ -5,14 +5,15 @@
     android:layout_height="match_parent"
     tools:context="${packageName}.${activityClass}" >
     
-    <GridView
-    android:id="@+id/gvResults"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentTop="true"
-    android:numColumns="3" >
-    </GridView>
+<!--     <GridView -->
+<!--     android:id="@+id/gvResults" -->
+<!--     android:layout_width="match_parent" -->
+<!--     android:layout_height="wrap_content" -->
+<!--     android:layout_alignParentLeft="true" -->
+<!--     android:layout_alignParentTop="true" -->
+<!--     android:numColumns="3"  -->
+<!--     android:drawSelectorOnTop="false"> -->
+<!--     </GridView> -->
 
 <!--     <com.origamilabs.library.views.StaggeredGridView -->
 <!--         android:id="@+id/sgvResults" -->
@@ -20,5 +21,14 @@
 <!--         android:layout_height="wrap_content" -->
 <!--         staggered:drawSelectorOnTop="true" -->
 <!--         staggered:numColumns="2" /> -->
+
+  <com.etsy.android.grid.StaggeredGridView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sgvResults"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:item_margin="8dp"
+        app:column_count="2" />
 
 </RelativeLayout>
