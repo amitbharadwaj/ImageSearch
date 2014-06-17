@@ -21,7 +21,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.SearchView;
 import android.widget.Toast;
-
 import com.etsy.android.grid.StaggeredGridView;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -36,6 +35,8 @@ public class SearchResultsActivity extends Activity {
   private StaggeredGridView sgvResults;
   List<ImageResult> imageResults = new ArrayList<ImageResult>();
   ImageResultArrayAdaptor irArrayAdaptor;
+
+  public static final int SETTINGS_REQUEST_CODE = 10;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -124,6 +125,16 @@ public class SearchResultsActivity extends Activity {
   }
 
   @Override
+  protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    Toast.makeText(this, query, Toast.LENGTH_LONG).show();
+    // REQUEST_CODE is defined above
+    if (resultCode == RESULT_OK && requestCode == SETTINGS_REQUEST_CODE) {
+      irArrayAdaptor.clear();
+      loadDataFromApi(0);
+    }
+  }
+
+  @Override
   protected void onNewIntent(Intent intent) {
     handleIntent(intent);
   }
@@ -181,6 +192,6 @@ public class SearchResultsActivity extends Activity {
 
   public void onSettings(MenuItem mi) {
     Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
-    startActivity(intent);
+    startActivityForResult(intent, SETTINGS_REQUEST_CODE);
   }
 }
