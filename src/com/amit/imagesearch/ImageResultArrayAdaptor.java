@@ -3,19 +3,13 @@ package com.amit.imagesearch;
 import java.util.List;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.loopj.android.image.SmartImageView;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
-import com.ortiz.touch.TouchImageView;
 
 public class ImageResultArrayAdaptor extends ArrayAdapter<ImageResult> {
 
@@ -27,8 +21,11 @@ public class ImageResultArrayAdaptor extends ArrayAdapter<ImageResult> {
   //  private final ImageLoader imageLoader;
   private final int ivLayoutResource;
 
+  private final Context context;
+
   public ImageResultArrayAdaptor(Context context, int resourceId, List<ImageResult> images) {
     super(context, resourceId, images);
+    this.context = context;
     ivLayoutResource = resourceId;
     //    imageLoader = ImageLoader.getInstance();
     //    imageLoader.init(ImageLoaderConfiguration.createDefault(context));
@@ -54,32 +51,14 @@ public class ImageResultArrayAdaptor extends ArrayAdapter<ImageResult> {
       viewHolder = (ViewHolder) convertView.getTag();
     }
 
-    viewHolder.ivImage.setImageUrl(imageResult.getTbUrl());
-
-    //    final ViewHolder holder = viewHolder; // just to conver to final
-    //
-    //    imageLoader.loadImage(imageResult.getTbUrl(), new ImageLoadingListener() {
-    //
-    //      @Override
-    //      public void onLoadingStarted(String imageUri, View view) {
-    //
-    //      }
-    //
-    //      @Override
-    //      public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-    //
-    //      }
-    //
-    //      @Override
-    //      public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-    //        holder.ivImage.setImageBitmap(loadedImage);
-    //      }
-    //
-    //      @Override
-    //      public void onLoadingCancelled(String imageUri, View view) {
-    //
-    //      }
-    //    });
+    //    LayoutParams params = new LayoutParams(imageResult.getTbWidth(), imageResult.getTbHeight());
+    //    viewHolder.ivImage.setLayoutParams(params);
+    if (NetworkHelper.isNetworkAvailable(context)) {
+      viewHolder.ivImage.setImageUrl(imageResult.getTbUrl());
+    } else {
+      viewHolder.ivImage.setImageResource(R.drawable.ic_launcher);
+      Toast.makeText(context, "No Internet", Toast.LENGTH_LONG).show();
+    }
 
     return convertView;
   }

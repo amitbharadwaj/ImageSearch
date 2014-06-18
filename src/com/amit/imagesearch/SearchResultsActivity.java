@@ -103,6 +103,11 @@ public class SearchResultsActivity extends Activity {
     rp.add("start", String.valueOf(4 * page));
 
     addParameters(rp);
+    if (!NetworkHelper.isNetworkAvailable(getApplicationContext())) {
+      Toast.makeText(this, "Can't find internet. Please check internet and try again",
+          Toast.LENGTH_LONG).show();
+      return;
+    }
 
     AsyncHttpClient asClient = new AsyncHttpClient();
     asClient.get("https://ajax.googleapis.com/ajax/services/search/images?v=1.0", rp,

@@ -3,10 +3,8 @@ package com.amit.imagesearch;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.List;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -14,12 +12,13 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
-import com.loopj.android.image.SmartImageView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -76,7 +75,9 @@ public class ImageDisplayActivity extends Activity {
 
       @Override
       public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-
+        Log.e("Faield URL", imageUri);
+        Toast.makeText(ImageDisplayActivity.this, failReason.getCause().getMessage(),
+            Toast.LENGTH_LONG).show();
       }
 
       @Override
