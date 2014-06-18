@@ -15,3 +15,12 @@ All required. Did all optional except these two:
 GIF walkthrough of all required and optional stories (using LiceCap)
 
 ![walkthrough](imagesearch.gif)
+
+All libraries except Android universal image loader are in source or lib folder. You need to add Android image loader in order to clone and compile this project.
+
+Used many open source libraries:
+ -- Android Universal Image Loader
+ -- TouchView
+ -- StaggeredGridView by etsy
+ -- SmartImageView
+ -- Async Http client
